@@ -20,31 +20,5 @@ function FillVisitorInfo(data) {
     listItem.textContent = data[0] + " : " + data[1]; // Заполняем его данными
     list.appendChild(listItem); // Добавляем в список
   }
-/*
-  function processGetResponse(response) {
-    return response.then(data => {
-        const responseElement = document.getElementById('getElementByIdInfo');
-        
-        // Проверка на код статуса 400
-        switch(response.status)
-        {
-          case 404: 
-            document.getElementById('getElementByIdInfo').appendChild(document.CreateElement("li").textContent = "couldn't find entity with such id"); 
-          default:
-            if(response.status != 200)
-            {
-              document.getElementById('getElementByIdInfo').appendChild(document.CreateElement("li").textContent = "unexpected status" + response.status); 
-            }
-            else
-            {
-              FillVisitorInfo(response.json())
-              .then(data => {
-                var infoFiels = document.getElementById("getElementByIdInfo");
-               Object.entries(data).forEach(([key, value]) => {
-                FillVisitorInfo(value)})})
-            }
-          }
-        })
-  }*/
 
   
