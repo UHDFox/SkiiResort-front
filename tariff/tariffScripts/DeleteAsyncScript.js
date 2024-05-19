@@ -1,6 +1,6 @@
 async function DeleteAsync()
 {
-      const result = await fetch('https://localhost:7046/api/v1/Tariff/DeleteTariff?id=' + document.getElementById("deleteTariffIdInput").value, 
+      const result = await fetch('https://localhost:7046/api/v1/Tariff?id=' + document.getElementById("deleteTariffIdInput").value, 
       { method: 'DELETE' })
       .then(response => 
         {

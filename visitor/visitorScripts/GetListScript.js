@@ -27,7 +27,7 @@
 
     if(document.getElementById('list').getElementsByTagName("li").length == 0)
     {
-      const result = await fetch('https://localhost:7046/api/Visitor?offset=' + offset.a + '&limit=' + limit.limit)
+      const result = await fetch('https://localhost:7046/api/v1/Visitor?offset=' + offset.a + '&limit=' + limit.limit)
       .then(response => response.json()) // Преобразуем ответ в JSON
       .then(data => {
       data.list.forEach(item => {
@@ -77,7 +77,7 @@
       var jsonData = {}
       jsonData[0] = offset.a, jsonData[1] = limit.limit;
       
-      const result = await fetch('https://localhost:7046/api/Visitor?offset=' + offset.a + '&limit=' + limit.limit)
+      const result = await fetch('https://localhost:7046/api/v1/Visitor?offset=' + offset.a + '&limit=' + limit.limit)
       .then(response => response.json()) // Преобразуем ответ в JSON
       .then(data => {
       
@@ -132,7 +132,7 @@
       var jsonData = {}
       jsonData[0] = offset.a, jsonData[1] = limit.limit;
       
-      const result = await fetch('https://localhost:7046/api/Visitor?offset=' + offset.a + '&limit=' + limit.limit)
+      const result = await fetch('https://localhost:7046/api/v1/Visitor?offset=' + offset.a + '&limit=' + limit.limit)
       .then(response => response.json()) // Преобразуем ответ в JSON
       .then(data => {
         data.list.forEach(item => {

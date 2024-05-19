@@ -11,7 +11,7 @@ function VisitorRegister()
       jsonData[key] = value;
     });
 
-    fetch('https://localhost:7046/api/Visitor', {
+    fetch('https://localhost:7046/api/v1/Visitor', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

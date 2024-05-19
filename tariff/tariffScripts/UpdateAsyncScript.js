@@ -13,7 +13,7 @@ async function UpdateTariffAsync()
   });
   jsonData["isVip"] = isVipCheck;
 
- await fetch('https://localhost:7046/api/v1/Tariff/UpdateTariff', {
+ await fetch('https://localhost:7046/api/v1/Tariff', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

@@ -1,6 +1,6 @@
 async function GetByElementByIdAsync()
 {     
-      const result = await fetch('https://localhost:7046/api/v1/Tariff/tariffId:guid?id='  + document.getElementById("tariffIdInput").value)
+      const result = await fetch('https://localhost:7046/api/v1/Tariff/id:guid?id='  + document.getElementById("tariffIdInput").value)
       .then(response => {
         if (response.ok) { // Проверяем, что статус ответа 200
           return response.json();
@@ -15,7 +15,7 @@ async function GetByElementByIdAsync()
         var list = document.getElementById('getElementByIdInfo');
         list.innerHTML = "";
         Object.entries(data).forEach(element => {
-            FillVisitorInfo(element)
+            FillTariffInfo(element)
           })})
           .catch(error =>{
             let visitorInfo = document.getElementById("getElementByIdInfo");
@@ -26,7 +26,7 @@ async function GetByElementByIdAsync()
           })
 }       
 
-function FillVisitorInfo(data) {
+function FillTariffInfo(data) {
     var list = document.getElementById("getElementByIdInfo");
     const listItem = document.createElement('li'); // Создаем элемент списка
     listItem.textContent = data[0] + " : " + data[1]; // Заполняем его данными

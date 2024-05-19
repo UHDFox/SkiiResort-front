@@ -11,7 +11,7 @@ function UpdateVisitorAsync()
       jsonData[key] = value;
     });
 
-    fetch('https://localhost:7046/api/Visitor', {
+    fetch('https://localhost:7046/api/v1/Visitor', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'

@@ -27,7 +27,7 @@
 
     if(document.getElementById('list').getElementsByTagName("li").length == 0)
     {
-      const result = await fetch('https://localhost:7046/api/v1/Tariff/getTariffsList?offset=' + offset.a + '&limit=' + limit.limit)
+      const result = await fetch('https://localhost:7046/api/v1/Tariff?offset=' + offset.a + '&limit=' + limit.limit)
       .then(response => response.json()) // Преобразуем ответ в JSON
       .then(data => {
       data.list.forEach(item => {
@@ -42,21 +42,6 @@
     listItem.textContent = data.name; // Заполняем его данными
     document.getElementById('list').appendChild(listItem); // Добавляем в список
   }
-
-  function processPostResponse(response) {
-    return response.json().then(data => {
-        const responseElement = document.getElementById('visitorCreateResponse');
-        responseElement.style.display = 'inline';
-        // Проверка на код статуса 201
-        if (response.status === 201) {
-            responseElement.innerText = "added successfully";
-        } else {
-            // Обработка других кодов статусов
-            responseElement.innerText = 'Unexpected status:' + response.status;
-        }
-    });
-  }
-
       
   async function GetNextPage()
   {   
@@ -77,7 +62,7 @@
       var jsonData = {}
       jsonData[0] = offset.a, jsonData[1] = limit.limit;
       
-      const result = await fetch('https://localhost:7046/api/v1/Tariff/getTariffsList?offset=' + offset.a + '&limit=' + limit.limit)
+      const result = await fetch('https://localhost:7046/api/v1/Tariff?offset=' + offset.a + '&limit=' + limit.limit)
       .then(response => response.json()) // Преобразуем ответ в JSON
       .then(data => {
       
@@ -132,7 +117,7 @@
       var jsonData = {}
       jsonData[0] = offset.a, jsonData[1] = limit.limit;
       
-      const result = await fetch('https://localhost:7046/api/v1/Tariff/getTariffsList?offset=' + offset.a + '&limit=' + limit.limit)
+      const result = await fetch('https://localhost:7046/api/v1/Tariff?offset=' + offset.a + '&limit=' + limit.limit)
       .then(response => response.json()) // Преобразуем ответ в JSON
       .then(data => {
         data.list.forEach(item => {

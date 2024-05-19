@@ -13,7 +13,7 @@ async function CreateTariffAsync()
   });
   jsonData["isVip"] = isVipCheck;
 
- await fetch('https://localhost:7046/api/v1/Tariff/CreateTariff', {
+ await fetch('https://localhost:7046/api/v1/Tariff', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
