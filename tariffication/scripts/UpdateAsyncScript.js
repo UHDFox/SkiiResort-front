@@ -1,19 +1,16 @@
 
-async function UpdateSkipassAsync()
+async function UpdateTarifficationAsync()
 {
-  var form = document.getElementById('createSkipassForm');
+  var form = document.getElementById('updateTarifficationForm');
   var formData = new FormData(form);
 
-  var checkbox = document.getElementById("IsActiveSkipassCheckbox");
-  var IsActiveCheck = checkbox.checked;
   var jsonData = {};
  
   formData.forEach((value, key) => {
     jsonData[key] = value;
   });
-  jsonData["status"] = IsActiveCheck;
 
- await fetch('https://localhost:7046/api/v1/Skipass', {
+ await fetch('https://localhost:7046/api/v1/Tariffication', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -22,7 +19,7 @@ async function UpdateSkipassAsync()
   })
   .then(response => 
     { // Исправлено на использование response.json() внутри then
-    const responseElement = document.getElementById('skipassUpdateResponse');
+    const responseElement = document.getElementById('tarifficationUpdateResponse');
     responseElement.style.display = 'inline';
     // Проверка на код статуса 200
     if (response.status === 200) {
@@ -33,7 +30,7 @@ async function UpdateSkipassAsync()
     }
   })
     .catch(error => {
-      var responseElement = document.getElementById('skipassUpdateResponse');
+      var responseElement = document.getElementById('tarifficationUpdateResponse');
       responseElement.style.display = 'inline';
       responseElement.innerText = "bad request. Please, check if you have entered the data correctly"
   })      

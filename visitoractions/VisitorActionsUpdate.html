@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <title>Update Visitor Action</title>
+        <style>
+            body {
+                margin: 20px;
+            }
+
+            .container {
+                max-width: 600px;
+                padding: 15px;
+                background-color: #f8f9fa;
+                border-radius: 10px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            h2 {
+                margin-bottom: 20px;
+                text-align: center;
+                color: #343a40;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .text-center {
+                margin-top: 20px;
+            }
+
+            .btn-primary {
+                background-color: #007bff;
+                border-color: #007bff;
+            }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #004085;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container"> 
+            <h2>Update Visitor Action</h2>
+            <form id="updateVisitorActionsForm">
+
+                <div class="form-group">
+                    <label for="visitorActionsIdInput">Action's ID:</label>
+                    <input type="text" class="form-control" id="visitorActionsIdInputIdInput" name="id" placeholder="Enter Action ID">
+                </div>
+
+                <div class="form-group">
+                    <label for="skipassIdInput">Skipass ID:</label>
+                    <input type="text" class="form-control" id="skipassIdInput" name="skipassId" placeholder="Enter Skipass ID">
+                </div>
+
+                <div class="form-group">
+                    <label for="locationIdInput">Location ID:</label>
+                    <input type="text" class="form-control" id="locationIdInput" name="locationId" placeholder="Enter Location ID">
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Time when occurred:</label>
+                    <input type="date" class="form-control" id="time" name="time" placeholder="Select Date">
+                </div>
+
+                <div class="form-group">
+                    <label for="balanceChangeInput">Balance Change:</label>
+                    <input type="number" class="form-control" id="balanceChangeInput" name="balanceChange" placeholder="Enter Balance Change">
+                </div>
+
+                <div class="form-group">
+                    <label>Transaction Type:</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="transactionType" id="transactionTypeReplenish" value="0" required>
+                        <label class="form-check-label" for="transactionTypeReplenish">Replenish</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="transactionType" id="transactionTypeWithdraw" value="1" required>
+                        <label class="form-check-label" for="transactionTypeWithdraw">Withdraw</label>
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="text-center">
+                <button type="button" class="btn btn-primary" onclick="UpdateAsync()">Submit</button>
+            </div>
+            <p id="visitorActionsUpdateResponse" class="text-center" style="display:none;"></p>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="VisitorActionsAdmin.html" class="btn btn-secondary">Go Back</a>
+        </div>
+
+        <script src="scripts/UpdateAsyncScript.js"></script>
+    </body>
+</html>

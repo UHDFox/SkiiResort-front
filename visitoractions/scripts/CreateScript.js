@@ -1,19 +1,18 @@
 
-async function CreateTariffAsync()
+async function CreateAsync()
 {
-  var form = document.getElementById('createTariffForm');
+  var form = document.getElementById('createVisitorActionsForm');
   var formData = new FormData(form);
-
-  var checkbox = document.getElementById("isVipTariffCheckbox");
-  var isVipCheck = checkbox.checked;
+  
   var jsonData = {};
-  formData.append("id", document.getElementById("tariffId"));
+  
   formData.forEach((value, key) => {
     jsonData[key] = value;
   });
-  jsonData["isVip"] = isVipCheck;
 
- await fetch('https://localhost:7046/api/v1/Tariff', {
+  jsonData["transactionType"] = parseInt(jsonData["transactionType"], 10);
+
+ await fetch('https://localhost:7046/api/v1/VisitorActions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -22,7 +21,7 @@ async function CreateTariffAsync()
   })
   .then(response => 
     { // Исправлено на использование response.json() внутри then
-    const responseElement = document.getElementById('tariffCreateResponse');
+    const responseElement = document.getElementById('visitorActionsCreateResponse');
     responseElement.style.display = 'inline';
     // Проверка на код статуса 201
     if (response.status === 201) {
@@ -33,7 +32,7 @@ async function CreateTariffAsync()
     }
   })
     .catch(error => {
-      var responseElement = document.getElementById('tariffCreateResponse');
+      var responseElement = document.getElementById('visitorActionsCreateResponse');
       responseElement.style.display = 'inline';
       responseElement.innerText = "bad request. Please, check if you have entered the data correctly"
   })      

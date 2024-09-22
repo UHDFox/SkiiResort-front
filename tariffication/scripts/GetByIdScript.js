@@ -1,6 +1,6 @@
-async function GetByElementByIdAsync()
+async function GetElementByIdAsync()
 {     
-      const result = await fetch('https://localhost:7046/api/v1/Visitor/id:guid?id='  + document.getElementById("visitorIdInput").value)
+      const result = await fetch('https://localhost:7046/api/v1/Tariffication/id:guid?id='  + document.getElementById("tarifficationIdInput").value)
       .then(response => {
         if (response.ok) { // Проверяем, что статус ответа 200
           return response.json();

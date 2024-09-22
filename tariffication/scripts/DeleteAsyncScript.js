@@ -1,10 +1,10 @@
 async function DeleteAsync()
 {
-      const result = await fetch('https://localhost:7046/api/v1/Visitor?id=' + document.getElementById("deleteVisitorIdInput").value, 
+      const result = await fetch('https://localhost:7046/api/v1/Tariffication?id=' + document.getElementById("deleteTarifficationIdInput").value, 
       { method: 'DELETE' })
       .then(response => 
         {
-            var responseElement = document.getElementById('visitorDeleteResponse')
+            var responseElement = document.getElementById('tarifficationDeleteResponse')
             if(response.status == 200)
             {
                 responseElement.style.display = 'inline';
