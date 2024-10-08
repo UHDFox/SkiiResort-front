@@ -1,3 +1,5 @@
+import config from '../../config.js';
+
 let offset = { a: 0 };  // Offset to track pagination
 let limit = { limit: 5 };  // Limit for number of items per page
 let pageCounter = { count: 1 };  // Tracks the current page number
@@ -25,7 +27,7 @@ async function fetchLocations() {
 
     try {
         // Fetch data from API
-        const response = await fetch(`https://localhost:7046/api/v1/Location?offset=${offset.a}&limit=${limit.limit}`);
+        const response = await fetch(`${config.apiUrl}/Location?offset=${offset.a}&limit=${limit.limit}`);
 
         // Check if the response status is not OK (2xx)
         if (!response.ok) {
@@ -94,3 +96,7 @@ async function GetPrevPage() {
 function updatePageCounter() {
     document.getElementById("PageCounter").innerHTML = pageCounter.count;  // Display the current page number
 }
+
+window.GetLocationsList = GetLocationsList;
+window.GetNextPage = GetNextPage;
+window.GetPrevPage = GetPrevPage;

@@ -1,3 +1,4 @@
+import config from '../../config.js';
 
 async function UpdateTariffAsync()
 {
@@ -13,7 +14,7 @@ async function UpdateTariffAsync()
   });
   jsonData["isVip"] = isVipCheck;
 
- await fetch('https://localhost:7046/api/v1/Tariff', {
+ await fetch(`${config.apiUrl}/Tariff`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -38,3 +39,5 @@ async function UpdateTariffAsync()
       responseElement.innerText = "bad request. Please, check if you have entered the data correctly"
   })      
 }
+
+window.UpdateTariffAsync = UpdateTariffAsync;

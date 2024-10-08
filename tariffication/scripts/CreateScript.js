@@ -1,3 +1,4 @@
+import config from '../../config.js';
 
 async function CreateTarifficationAsync()
 {
@@ -10,7 +11,7 @@ async function CreateTarifficationAsync()
     jsonData[key] = value;
   });
 
- await fetch('https://localhost:7046/api/v1/Tariffication', {
+ await fetch(`${config.apiUrl}/Tariffication`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -35,5 +36,7 @@ async function CreateTarifficationAsync()
       responseElement.innerText = "bad request. Please, check if you have entered the data correctly"
   })      
 }
+
+window.CreateTarifficationAsync = CreateTarifficationAsync;
 
 

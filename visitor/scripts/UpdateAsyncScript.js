@@ -1,3 +1,4 @@
+import config from '../../config.js';
 
 async function UpdateVisitorAsync()
 {
@@ -10,7 +11,7 @@ async function UpdateVisitorAsync()
     jsonData[key] = value;
   });
 
- await fetch('https://localhost:7046/api/v1/Visitor', {
+ await fetch(`${config.apiUrl}/Visitor`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -35,3 +36,5 @@ async function UpdateVisitorAsync()
       responseElement.innerText = "bad request. Please, check if you have entered the data correctly"
   })      
 }
+
+window.UpdateVisitorAsync = UpdateVisitorAsync;

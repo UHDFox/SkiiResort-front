@@ -1,3 +1,5 @@
+import config from '../../config.js';
+
 async function CreateTariffAsync() {
   var form = document.getElementById('createTariffForm');
   var formData = new FormData(form);
@@ -10,7 +12,7 @@ async function CreateTariffAsync() {
   });
   jsonData["isVip"] = isVipCheck;
 
-  await fetch('https://localhost:7046/api/v1/Tariff', {
+  await fetch(`${config.apiUrl}/Tariff`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
@@ -35,3 +37,5 @@ async function CreateTariffAsync() {
       responseElement.innerText = "bad request. Please, check if you have entered the data correctly";
   });
 }
+
+window.CreateTariffAsync = CreateTariffAsync;

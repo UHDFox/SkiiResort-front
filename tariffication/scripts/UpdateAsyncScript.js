@@ -1,5 +1,6 @@
+import config from '../../config.js';
 
-async function UpdateTarifficationAsync()
+async function UpdateAsync()
 {
   var form = document.getElementById('updateTarifficationForm');
   var formData = new FormData(form);
@@ -10,7 +11,7 @@ async function UpdateTarifficationAsync()
     jsonData[key] = value;
   });
 
- await fetch('https://localhost:7046/api/v1/Tariffication', {
+ await fetch(`${config.apiUrl}/Tariffication`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -35,3 +36,5 @@ async function UpdateTarifficationAsync()
       responseElement.innerText = "bad request. Please, check if you have entered the data correctly"
   })      
 }
+
+window.UpdateAsync = UpdateAsync;

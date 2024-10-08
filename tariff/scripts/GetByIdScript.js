@@ -1,6 +1,8 @@
+import config from '../../config.js';
+
 async function GetElementByIdAsync() {
   const id = document.getElementById("tariffIdInput").value;
-  const url = `https://localhost:7046/api/v1/Tariff/id:guid?id=${id}`;  // Fixed URL structure
+  const url = `${config.apiUrl}/Tariff/id:guid?id=${id}`;  // Fixed URL structure
 
   try {
       const response = await fetch(url, {
@@ -45,3 +47,5 @@ function FillTariffInfo(data) {
   listItem.textContent = `${data[0]} : ${data[1]}`; // Format the data
   list.appendChild(listItem); // Append it to the list
 }
+
+window.GetElementByIdAsync = GetElementByIdAsync;

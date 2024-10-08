@@ -1,6 +1,8 @@
+import config from '../../config.js';
+
 async function DeleteAsync()
 {
-      const result = await fetch('https://localhost:7046/api/v1/Tariffication?id=' + document.getElementById("deleteTarifficationIdInput").value, 
+      const result = await fetch(`${config.apiUrl}/Tariffication?id=` + document.getElementById("deleteTarifficationIdInput").value, 
       { method: 'DELETE' })
       .then(response => 
         {
@@ -21,3 +23,5 @@ async function DeleteAsync()
         responseElement.style.display = 'inline',
         responseElement.innerText = 'Unexpected status:' + response.status})
 }
+
+window.DeleteAsync = DeleteAsync;

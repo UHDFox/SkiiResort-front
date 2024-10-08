@@ -1,3 +1,5 @@
+import config from '../../config.js';
+
 async function TapSkipassAsync() {
   const form = document.getElementById('tapSkipassRequest');
   const formData = new FormData(form);
@@ -7,7 +9,7 @@ async function TapSkipassAsync() {
   responseElement.style.display = 'inline';
 
   try {
-      const response = await fetch('https://localhost:7046/api/v1/VisitorActions/tapSkipass', {
+      const response = await fetch(`${config.apiUrl}/VisitorActions/tapSkipass`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(jsonData)
@@ -48,3 +50,5 @@ function handleErrorResponse(status, message, responseElement) {
 
   responseElement.innerText = errorMessage;
 }
+
+window.TapSkipassAsync = TapSkipassAsync;

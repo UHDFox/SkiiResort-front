@@ -1,8 +1,10 @@
+import config from '../../config.js';
+
 function DeleteAsync() {
     const id = document.getElementById("deleteLocationIdInput").value;
 
     // Perform the deletion logic (e.g., API call)
-    fetch(`https://localhost:7046/api/v1/Location?id=${id}`, {
+    fetch(`${config.apiUrl}/Location?id=${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -27,3 +29,5 @@ function DeleteAsync() {
             document.getElementById("locationDeleteResponse").innerHTML = `<li>Error deleting location.</li>`;
         });
 }
+
+window.DeleteAsync = DeleteAsync;

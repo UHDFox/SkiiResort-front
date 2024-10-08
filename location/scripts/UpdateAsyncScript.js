@@ -1,3 +1,4 @@
+import config from '../../config.js';
 
 async function UpdateLocationAsync()
 {
@@ -10,7 +11,7 @@ async function UpdateLocationAsync()
     jsonData[key] = value;
   });
 
- await fetch('https://localhost:7046/api/v1/Location', {
+  await fetch(`${config.apiUrl}/Location`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -35,3 +36,5 @@ async function UpdateLocationAsync()
       responseElement.innerText = "bad request. Please, check if you have entered the data correctly"
   })      
 }
+
+window.UpdateLocationAsync = UpdateLocationAsync;

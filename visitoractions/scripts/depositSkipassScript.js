@@ -1,3 +1,5 @@
+import config from '../../config.js';
+
 async function DepositSkipassAsync()
 {
     var form = document.getElementById('depositSkipassRequest');
@@ -9,7 +11,7 @@ async function DepositSkipassAsync()
       jsonData[key] = value;
     });
   
-   await fetch('https://localhost:7046/api/v1/VisitorActions/depositSkipassBalance', {
+   await fetch(`${config.apiUrl}/VisitorActions/depositSkipassBalance`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -34,3 +36,5 @@ async function DepositSkipassAsync()
         responseElement.innerText = "bad request. Please, check if you have entered the data correctly"
     })      
 }
+
+window.DepositSkipassAsync = DepositSkipassAsync;

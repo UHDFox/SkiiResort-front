@@ -1,40 +1,45 @@
+import config from '../../config.js';
 
-async function UpdateSkipassAsync()
-{
+async function UpdateSkipassAsync() {
   var form = document.getElementById('updateSkipassForm');
   var formData = new FormData(form);
 
-  var checkbox = document.getElementById("isVipSkipassCheckbox");
-  var isVipCheck = checkbox.checked;
+  var checkbox = document.getElementById("IsActiveSkipassCheckbox");
+  var isActiveCheck = checkbox.checked; // Исправлено название переменной
   var jsonData = {};
-  formData.append("id", document.getElementById("skipassId").value);
+  
+  formData.append("id", document.getElementById("skipassIdInput").value); // Исправлено ID поля
+  
   formData.forEach((value, key) => {
     jsonData[key] = value;
   });
-  jsonData["isVip"] = isVipCheck;
+  
+  jsonData["isActive"] = isActiveCheck; // Исправлено имя поля для отправки
 
- await fetch('https://localhost:7046/api/v1/Skipass', {
+  await fetch(`${config.apiUrl}/Skipass`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(jsonData)
   })
-  .then(response => 
-    { // Исправлено на использование response.json() внутри then
+  .then(response => {
     const responseElement = document.getElementById('skipassUpdateResponse');
     responseElement.style.display = 'inline';
-    // Проверка на код статуса 200
-    if (response.status === 200) {
-      responseElement.innerText = "updated successfully";
+
+    if (response.ok) {
+      responseElement.innerText = "Updated successfully";
     } else {
-      // Обработка других кодов статусов
-      responseElement.innerText = 'Unexpected status: ' + data.message; // Исправлено на использование data.message
+      return response.json().then(data => {
+        responseElement.innerText = 'Unexpected status: ' + data.message;
+      });
     }
   })
-    .catch(error => {
-      var responseElement = document.getElementById('skipassUpdateResponse');
-      responseElement.style.display = 'inline';
-      responseElement.innerText = "bad request. Please, check if you have entered the data correctly"
-  })      
+  .catch(error => {
+    var responseElement = document.getElementById('skipassUpdateResponse');
+    responseElement.style.display = 'inline';
+    responseElement.innerText = "Bad request. Please, check if you have entered the data correctly";
+  });
 }
+
+window.UpdateSkipassAsync = UpdateSkipassAsync;

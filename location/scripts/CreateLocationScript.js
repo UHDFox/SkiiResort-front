@@ -1,3 +1,4 @@
+import config from '../../config.js';
 
 async function CreateLocationAsync()
 {
@@ -10,7 +11,7 @@ async function CreateLocationAsync()
     jsonData[key] = value;
   });
 
- await fetch('https://localhost:7046/api/v1/Location', {
+ await fetch(`${config.apiUrl}/Location`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -37,3 +38,4 @@ async function CreateLocationAsync()
 }
 
 
+window.CreateLocationAsync = CreateLocationAsync;

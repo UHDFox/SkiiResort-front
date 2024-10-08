@@ -1,3 +1,4 @@
+import config from '../../config.js';
 
 async function CreateSkipassAsync()
 {
@@ -13,7 +14,7 @@ async function CreateSkipassAsync()
   });
   jsonData["status"] = IsActiveCheck;
 
- await fetch('https://localhost:7046/api/v1/Skipass', {
+ await fetch(`${config.apiUrl}/Skipass`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -39,4 +40,4 @@ async function CreateSkipassAsync()
   })      
 }
 
-
+window.CreateSkipassAsync = CreateSkipassAsync;

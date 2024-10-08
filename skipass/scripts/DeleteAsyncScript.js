@@ -1,8 +1,10 @@
+import config from '../../config.js';
+
 function DeleteAsync() {
   const id = document.getElementById("deleteSkipassIdInput").value;
 
   // Perform the deletion logic (e.g., API call)
-  fetch(`https://localhost:7046/api/v1/Skipass?id=${id}`, {
+  fetch(`${config.apiUrl}/Skipass?id=${id}`, {
       method: 'DELETE',
       headers: {
           'Content-Type': 'application/json'
@@ -27,3 +29,5 @@ function DeleteAsync() {
           document.getElementById("skipassDeleteResponse").innerHTML = `<li>Error deleting skipass.</li>`;
       });
 }
+
+window.DeleteAsync = DeleteAsync;

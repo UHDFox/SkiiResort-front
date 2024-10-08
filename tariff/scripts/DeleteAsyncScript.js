@@ -1,8 +1,10 @@
+import config from '../../config.js';
+
 function DeleteAsync() {
   const id = document.getElementById("deleteTariffIdInput").value;
 
   // Perform the deletion logic (e.g., API call)
-  fetch(`https://localhost:7046/api/v1/Tariff?id=${id}`, {
+  fetch(`${config.apiUrl}/Tariff?id=${id}`, {
       method: 'DELETE',
       headers: {
           'Content-Type': 'application/json'
@@ -27,3 +29,5 @@ function DeleteAsync() {
           document.getElementById("tariffDeleteResponse").innerHTML = `<li>Error deleting tariff.</li>`;
       });
 }
+
+window.DeleteAsync = DeleteAsync;

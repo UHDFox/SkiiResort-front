@@ -1,6 +1,8 @@
+import config from '../../config.js';
+
 async function GetElementByIdAsync()
 {     
-      const result = await fetch('https://localhost:7046/api/v1/Tariffication/id:guid?id='  + document.getElementById("tarifficationIdInput").value)
+      const result = await fetch(`${config.apiUrl}/Tariffication/id:guid?id=`  + document.getElementById("tarifficationIdInput").value)
       .then(response => {
         if (response.ok) { // Проверяем, что статус ответа 200
           return response.json();
@@ -26,9 +28,12 @@ async function GetElementByIdAsync()
           })
 }       
 
-function FillVisitorInfo(data) {
-    var list = document.getElementById("getElementByIdInfo");
-    const listItem = document.createElement('li'); // Создаем элемент списка
-    listItem.textContent = data[0] + " : " + data[1]; // Заполняем его данными
-    list.appendChild(listItem); // Добавляем в список
-  }
+function FillVisitorInfo(data) 
+{
+  var list = document.getElementById("getElementByIdInfo");
+  const listItem = document.createElement('li'); // Создаем элемент списка
+  listItem.textContent = data[0] + " : " + data[1]; // Заполняем его данными
+  list.appendChild(listItem); // Добавляем в список
+}
+
+window.GetElementByIdAsync = GetElementByIdAsync;

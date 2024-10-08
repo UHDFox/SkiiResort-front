@@ -1,4 +1,4 @@
-
+import config from '../../config.js';
 
 async function UpdateAsync()
 {
@@ -12,7 +12,7 @@ async function UpdateAsync()
   });
   jsonData["transactionType"] = parseInt(jsonData["transactionType"], 10);
 
- await fetch('https://localhost:7046/api/v1/VisitorActions', {
+ await fetch(`${config.apiUrl}/VisitorActions`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -37,3 +37,5 @@ async function UpdateAsync()
       responseElement.innerText = "bad request. Please, check if you have entered the data correctly"
   })      
 }
+
+window.UpdateAsync = UpdateAsync;

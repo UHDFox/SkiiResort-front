@@ -1,6 +1,8 @@
+import config from '../../config.js';
+
 async function GetElementByIdAsync() {
   const id = document.getElementById("visitorIdInput").value;  // Adjusted the input field to visitor
-  const url = `https://localhost:7046/api/v1/Visitor/id:guid?id=${id}`;  // Routing remains unchanged
+  const url = `${config.apiUrl}/Visitor/id:guid?id=${id}`;  // Routing remains unchanged
 
   try {
       const response = await fetch(url, {
@@ -45,3 +47,5 @@ function FillVisitorInfo(data) {
   listItem.textContent = `${data[0]} : ${data[1]}`;  // Format the data
   list.appendChild(listItem);  // Append it to the list
 }
+
+window.GetElementByIdAsync = GetElementByIdAsync;

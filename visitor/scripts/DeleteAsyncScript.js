@@ -1,8 +1,10 @@
+import config from '../../config.js';
+
 function DeleteAsync() {
   const id = document.getElementById("deleteVisitorIdInput").value;
 
   // Perform the deletion logic (e.g., API call)
-  fetch(`https://localhost:7046/api/v1/Visitor?id=${id}`, {
+  fetch(`${config.apiUrl}/Visitor?id=${id}`, {
       method: 'DELETE',
       headers: {
           'Content-Type': 'application/json'
@@ -27,3 +29,5 @@ function DeleteAsync() {
           document.getElementById("visitorDeleteResponse").innerHTML = `<li>Error deleting visitor.</li>`;
       });
 }
+
+window.DeleteAsync = DeleteAsync;

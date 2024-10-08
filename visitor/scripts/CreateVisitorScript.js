@@ -1,3 +1,4 @@
+import config from '../../config.js';
 
 function VisitorRegister()
 {
@@ -11,7 +12,7 @@ function VisitorRegister()
       jsonData[key] = value;
     });
 
-    fetch('https://localhost:7046/api/v1/Visitor', {
+    fetch(`${config.apiUrl}/Visitor`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -38,4 +39,6 @@ function ProcessPostResponse(response) {
       }
   });
 }
+
+window.VisitorRegister = VisitorRegister;
  
